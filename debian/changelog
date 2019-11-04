@@ -1,0 +1,5 @@
+piql-insight (1.0.0-0~1) UNRELEASED; urgency=medium
+
+  * Initial release. (Closes: #XXXXXX)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon, 04 Nov 2019 15:14:28 +0100
