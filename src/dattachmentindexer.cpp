@@ -14,6 +14,7 @@
 //
 #include    "dattachmentindexer.h"
 #include    "dinsightconfig.h"
+#include    "platform_defaults.h"
 
 //  QT INCLUDES
 //
@@ -272,8 +273,7 @@ void DAttachmentIndexer::run()
     }
     
     // Next step is to launch indexer...
-    QString defaultIndexerTool = "index.cmd %REPORTS_DIR% %ATTACHMENT_DIR% %NAME%";
-    QString indexerTool = DInsightConfig::get( "INDEXER_TOOL", defaultIndexerTool );
+    QString indexerTool = DInsightConfig::get( "INDEXER_TOOL", INDEXER_TOOL );
     QProcess indexerExe;
 
     indexerTool = indexerTool.replace( "%REPORTS_DIR%", QDir::toNativeSeparators( m_ReportFolder ) );

@@ -15,6 +15,7 @@
 #include    "dinsightreportwindow.h"
 #include    "dinsightconfig.h"
 #include    "qpersistantfiledialog.h"
+#include    "platform_defaults.h"
 
 //  ZIP INCLUDES
 //
@@ -248,10 +249,11 @@ void DInsightReportWindow::emailButtonClicked()
     //QDesktopServices::openUrl( url );
 
     // Alternative 2
-    QString emailApp = DInsightConfig::get( "EMAIL_APPLICATION", "c:\\Program Files (x86)\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE" );
-    QString emailArg = DInsightConfig::get( "EMAIL_ARGUMENTS", "/c ipm.note /m 'mailto:johndoe@domain.com&subject=Report' /a %ATTACHMENT_FILENAME%" );
+    QString emailApp = DInsightConfig::get( "EMAIL_APPLICATION", EMAIL_APPLICATION );
+    QString emailArg = DInsightConfig::get( "EMAIL_ARGUMENTS", EMAIL_ARGUMENTS );
     emailArg = emailArg.replace( "%ATTACHMENT_FILENAME%", attachment );
-    QString command = "\"" + emailApp + "\"  " + emailArg;
+    // QString command = "\"" + emailApp + "\"  " + emailArg;
+    QString command = emailApp + "  " + emailArg;
 
     if ( !QProcess::startDetached( command ) )
     {
